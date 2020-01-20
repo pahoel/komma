@@ -52,11 +52,12 @@ class Komma extends StatelessWidget {
                       Text("\nEksempel:\n ${kommaregler[index].medKomma}"),
                   onTap: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => showDetails()));
+                        MaterialPageRoute(builder: (context) => showDetails(regelIndeks: index)));
                   },
                 ),
               );
-            }));
+            })
+    );
   }
 }
 

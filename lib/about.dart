@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:komma/data.dart';
 
-class showDetails extends StatelessWidget {
-  int _indeks = 0;
-  int regelIndeks = 0;
-  String forslag = "";
+int _indeks = 0;
+String forslag = "";
 
-  /*final List setninger = [
-    Eksempler("Dette er tekst med komma, og ikke uten komma",
-        "Dette er tekst uten komma og ikke med komma"),
-    Eksempler("Dette er også en tekst med komma, og ikke uten komma",
-        "Dette er også en tekst uten komma og ikke med komma")
-  ];*/
+class showDetails extends StatelessWidget {
+
+  final int regelIndeks;
+  const showDetails({Key key, this.regelIndeks}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,12 +29,13 @@ class showDetails extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: <Widget>[
-                Text("Skriv inn setninga under streken med korrekt bruk av komma, og trykk Enter når du er ferdig:\n",
+                Text("Sett inn komma der du mener det bør stå, og trykk Enter når du er ferdig:\n",
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.deepOrangeAccent),
                     textAlign: TextAlign.left),
-                TextField(
+                TextFormField(
+                  initialValue: setninger[_indeks].tekstUtenKomma,
                   autofocus: true,
                   maxLines: null,
                   textInputAction: TextInputAction.done,
@@ -46,7 +43,7 @@ class showDetails extends StatelessWidget {
                     helperText: kommaregler[setninger[_indeks].regelNr].regel,
                     hintText: setninger[_indeks].tekstMedKomma, hintMaxLines: 3,
                   ),
-                  onSubmitted: (String str) {
+                  onSaved: (String str) {
                     setState() {
                       forslag = str;
                       _indeks ++; }
