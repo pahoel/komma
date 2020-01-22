@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:komma/data.dart';
 
-int _indeks;
+int _indeks; //Holder indeksen til gjeldende kommaregel overført fra main til regelIndeks her
+int _uttrekksindeks = 0;
 String forslag = "";
+String regel = ""; //Regelen som skal vises under øvingstekset
 List uttrekkSetninger = new List();
+String uttrekksSetning; //Setningen som skal vises i redigeringsfeltet
 
 class showDetails extends StatelessWidget {
-
   final int regelIndeks;
   const showDetails({Key key, this.regelIndeks}) : super(key: key);
 
@@ -33,24 +35,24 @@ class showDetails extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: <Widget>[
-                Text("Sett inn komma der du mener det bør stå, og trykk Enter når du er ferdig:\n",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.deepOrangeAccent),
+                Text("Sett inn komma der du mener det bør stå:\n",
+                    style: TextStyle(color: Colors.blueGrey),
                     textAlign: TextAlign.left),
                 TextFormField(
-                  initialValue: setninger[_indeks].tekstUtenKomma,
-                  //autofocus: true,
+                  initialValue: uttrekksSetning,
                   maxLines: null,
                   textInputAction: TextInputAction.done,
                   decoration: InputDecoration(
                     helperText: "Husk: Ikke mellomrom foran komma...",
-                    hintText: setninger[_indeks].tekstMedKomma, hintMaxLines: 3,
+                    hintText: setninger[0].tekstMedKomma,
+                    hintMaxLines: 3,
                   ),
                   onSaved: (String str) {
                     setState() {
                       forslag = str;
-                      _indeks ++; }
+                      _indeks++;
+                    }
+
                     debugPrint(str);
                     final snackbar = SnackBar(
                       duration: Duration(seconds: 1),
@@ -61,7 +63,8 @@ class showDetails extends StatelessWidget {
                 ),
                 Container(
                   margin: EdgeInsets.only(top: 10.0, bottom: 10.0),
-                  child: Text(kommaregler[setninger[regelIndeks].regelNr].regel,
+                  child: Text(
+                    regel,
                     style: TextStyle(color: Colors.redAccent),
                   ),
                 ),
@@ -76,7 +79,7 @@ class showDetails extends StatelessWidget {
                   //onPressed: _performLogin,
                   child: Text('Ferdig'),
                 ),
-                Text (""),
+                Text(""),
               ],
             ),
           ),
@@ -85,18 +88,27 @@ class showDetails extends StatelessWidget {
     );
   }
 
-  void fyllUttrekksetninger (){
+  void fyllUttrekksetninger() {
     int i;
-    for(i = 0; i < setninger.length; i++){
-      if(setninger[i].regelNr == regelIndeks){
-        uttrekkSetninger.add(Training(setninger[i].tekstMedKomma, setninger[i].tekstUtenKomma, regelIndeks));
+    uttrekkSetninger.clear();
+    uttrekksSetning = "Ingen øvingssetninger til denne kommaregelen"; //Dersom try-catch ikke gir resultat
+    regel = "";
+
+    for (i = 0; i < setninger.length; i++) {
+      try {
+        if (setninger[i].regelNr == _indeks) {
+          uttrekkSetninger.add(Training(setninger[i].tekstMedKomma, setninger[i].tekstUtenKomma, i));
+          uttrekksSetning = uttrekkSetninger[0].tekstUtenKomma;
+          //regel = kommaregler[setninger[regelIndeks].regelNr].regel;
+          regel = kommaregler[regelIndeks].regel;
+        }
+
+      } on Exception catch (e) {
+        debugPrint(e.toString());
       }
     }
-    debugPrint(uttrekkSetninger.length.toString());
-  }
-
-  void svartest (int i){
-
+    debugPrint(regelIndeks.toString());
+    debugPrint(regel);
   }
 }
 

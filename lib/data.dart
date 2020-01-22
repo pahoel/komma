@@ -55,11 +55,23 @@ List kommaregler = [
 
 List setninger = [
   Training(
-      "Dette er tekst med komma, og ikke uten komma",
-      "Dette er tekst uten komma og ikke med komma",
+      "1 Dette er tekst med komma, og ikke uten komma",
+      "1 Dette er tekst uten komma og ikke med komma",
+      0),
+  Training(
+      "1,1 Dette er også en tekst med komma, og ikke uten komma",
+      "1,1 Dette er også en tekst uten komma og ikke med komma",
+      0),
+  Training(
+      "2 Dette er også en tekst med komma, og ikke uten komma",
+      "2 Dette er også en tekst uten komma og ikke med komma",
       1),
   Training(
-      "Dette er også en tekst med komma, og ikke uten komma",
-      "Dette er også en tekst uten komma og ikke med komma",
-      1)
+      "2,1 Dette er også en tekst med komma, og ikke uten komma",
+      "2,1 Dette er også en tekst uten komma og ikke med komma",
+      1),
+  Training(
+      "3 Dette er også en tekst med komma, og ikke uten komma",
+      "3 Dette er også en tekst uten komma og ikke med komma",
+      2)
 ];
