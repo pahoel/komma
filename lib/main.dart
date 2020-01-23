@@ -6,15 +6,9 @@ void main() => runApp(new MaterialApp(home: Komma()));
 Color _colorFront = Colors.deepOrangeAccent;
 Color _colorBack = Colors.deepOrangeAccent.shade100;
 
-RichText rikTekst = RichText(
-    text: TextSpan(text: "", style: TextStyle(color: Colors.black), children: [
-  TextSpan(text: "Dette er "),
-  TextSpan(text: "farget", style: TextStyle(color: Colors.blue)),
-  TextSpan(text: " tekst."),
-]));
+class Test extends ovelse{}
 
 class Komma extends StatelessWidget {
-
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +46,7 @@ class Komma extends StatelessWidget {
                       Text("\nEksempel:\n ${kommaregler[index].medKomma}"),
                   onTap: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => showDetails(regelIndeks: index)));
+                        MaterialPageRoute(builder: (context) => ovelse(regelIndeks: index)));
                   },
                 ),
               );

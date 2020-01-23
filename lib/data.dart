@@ -55,12 +55,24 @@ List kommaregler = [
 
 List setninger = [
   Training(
-      "1 Dette er tekst med komma, og ikke uten komma",
-      "1 Dette er tekst uten komma og ikke med komma",
+      "Per gikk en tur på ski, og Anne gikk på skøyter",
+      "Per gikk en tur på ski og Anne gikk på skøyter",
       0),
   Training(
-      "1,1 Dette er også en tekst med komma, og ikke uten komma",
-      "1,1 Dette er også en tekst uten komma og ikke med komma",
+      "Kondrad skifta jobb for tredje gang på to år, og Aud fulgte opp med sin andre skilsmisse på to år",
+      "Kondrad skifta jobb for tredje gang på to år og Aud fulgte opp med sin andre skilsmisse på to år",
+      0),
+  Training(
+      "Skal vi kjøpe nytt hus i år, eller skal vi vente til neste år?",
+      "Skal vi kjøpe nytt hus i år eller skal vi vente til neste år?",
+      0),
+  Training(
+      "Dette hadde jeg ikke ventet fra deg, for vi hadde jo avtalt noe annet",
+      "Dette hadde jeg ikke ventet fra deg for vi hadde jo avtalt noe annet",
+      0),
+  Training(
+      "Dette var svært hyggelig, men nå må vi dra hjem",
+      "Dette var svært hyggelig men nå må vi dra hjem",
       0),
   Training(
       "2 Dette er også en tekst med komma, og ikke uten komma",
@@ -75,3 +87,5 @@ List setninger = [
       "3 Dette er også en tekst uten komma og ikke med komma",
       2)
 ];
+
+

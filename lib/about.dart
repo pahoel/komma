@@ -1,21 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:komma/data.dart';
 
 int _indeks; //Holder indeksen til gjeldende kommaregel overført fra main til regelIndeks her
 int _uttrekksindeks = 0;
-String forslag = "";
+String valgtSvar = ""; // Brukerens løsning på setningen
+String rettSvar = "";   //Korrekt svar på oppgaven
 String regel = ""; //Regelen som skal vises under øvingstekset
-List uttrekkSetninger = new List();
+List uttrekkSetninger = new List(); // Setningene som tilhører denne kommaregelen
 String uttrekksSetning; //Setningen som skal vises i redigeringsfeltet
 
-class showDetails extends StatelessWidget {
+class ovelse extends StatefulWidget {
+
+  @override
+  _ovelseState createState() => _ovelseState();
   final int regelIndeks;
-  const showDetails({Key key, this.regelIndeks}) : super(key: key);
+  const ovelse({Key key, this.regelIndeks});
+
+}
+
+class _ovelseState extends State<ovelse> {
 
   @override
   Widget build(BuildContext context) {
     //debugPrint(setninger[regelIndeks].tekstMedKomma);
-    _indeks = regelIndeks;
+
+    _indeks = widget.regelIndeks;
     fyllUttrekksetninger(); // Lager en liste med setninger som tilhører gjeldende kommaregelnummer (regelNr)
 
     return Scaffold(
@@ -47,18 +57,9 @@ class showDetails extends StatelessWidget {
                     hintText: setninger[0].tekstMedKomma,
                     hintMaxLines: 3,
                   ),
-                  onSaved: (String str) {
-                    setState() {
-                      forslag = str;
-                      _indeks++;
-                    }
-
-                    debugPrint(str);
-                    final snackbar = SnackBar(
-                      duration: Duration(seconds: 1),
-                      content: Text("Korrekt svar"),
-                    );
-                    Scaffold.of(context).showSnackBar(snackbar);
+                  onChanged: (String value) {
+                    valgtSvar = value;
+                    rettSvar = setninger[_uttrekksindeks].tekstMedKomma;
                   },
                 ),
                 Container(
@@ -68,17 +69,37 @@ class showDetails extends StatelessWidget {
                     style: TextStyle(color: Colors.redAccent),
                   ),
                 ),
-                RaisedButton(
-                  onPressed: () {
-                    final snackbar = SnackBar(
-                      duration: Duration(seconds: 1),
-                      content: Text("Korrekt svar"),
-                    );
-                    Scaffold.of(context).showSnackBar(snackbar);
-                  },
-                  //onPressed: _performLogin,
-                  child: Text('Ferdig'),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
+                  children: <Widget>[
+                    IconButton(
+                      onPressed: () => tilForrige(),
+                      icon: Icon(Icons.arrow_back),
+                      color: Colors.deepOrangeAccent,
+                      tooltip: "Til forrige setning",
+                      highlightColor: Colors.black,
+                      disabledColor: Colors.grey,
+                    ),
+                    IconButton(
+                      onPressed: () => sjekkSvaret(),
+                      icon: Icon(Icons.done),
+                      color: Colors.deepOrangeAccent,
+                      tooltip: "Sjekk løsningen din",
+                      highlightColor: Colors.black,
+                      disabledColor: Colors.grey,
+                    ),
+                    IconButton(
+                      onPressed: () => tilNeste(),
+                      icon: Icon(Icons.arrow_forward),
+                      color: Colors.deepOrangeAccent,
+                      tooltip: "Til neste setning",
+                      highlightColor: Colors.black,
+                      disabledColor: Colors.grey,
+                    ),
+                  ],
                 ),
+                Spacer(),
                 Text(""),
               ],
             ),
@@ -99,22 +120,37 @@ class showDetails extends StatelessWidget {
         if (setninger[i].regelNr == _indeks) {
           uttrekkSetninger.add(Training(setninger[i].tekstMedKomma, setninger[i].tekstUtenKomma, i));
           uttrekksSetning = uttrekkSetninger[0].tekstUtenKomma;
-          //regel = kommaregler[setninger[regelIndeks].regelNr].regel;
-          regel = kommaregler[regelIndeks].regel;
+          regel = kommaregler[_indeks].regel;
         }
 
       } on Exception catch (e) {
         debugPrint(e.toString());
       }
     }
-    debugPrint(regelIndeks.toString());
-    debugPrint(regel);
   }
+
+  sjekkSvaret() {
+    print("Svaret er <$valgtSvar> - og rett svar er <$rettSvar>");
+    if(valgtSvar != rettSvar || valgtSvar == "" || rettSvar == ""){
+      debugPrint("Svaret er feil");
+    } else {
+      debugPrint("Svaret er korrekt");
+    }
+  }
+
+  tilForrige() {
+    setState(() {
+      _uttrekksindeks = (_uttrekksindeks - 1) % uttrekkSetninger.length;
+    });
+    debugPrint(_uttrekksindeks.toString());
+  }
+
+  tilNeste() {
+    setState(() {
+      _uttrekksindeks = (_uttrekksindeks + 1) % uttrekkSetninger.length;
+    });
+    uttrekksSetning = uttrekkSetninger[_uttrekksindeks].tekstUtenKomma;
+    debugPrint(uttrekksSetning);
+  }
+
 }
-
-/*class Eksempler {
-  String tekstMedKomma;
-  String tekstUtenKomma;
-
-  Eksempler(this.tekstMedKomma, this.tekstUtenKomma);
-}*/
