@@ -10,7 +10,6 @@ String regel = ""; //Regelen som skal vises under øvingstekset
 List uttrekkSetninger = new List(); // Setningene som tilhører denne kommaregelen
 String uttrekksSetning; //Setningen som skal vises i redigeringsfeltet
 
-
 class ovelse extends StatefulWidget {
   @override
   _ovelseState createState() => _ovelseState();
@@ -21,27 +20,30 @@ class ovelse extends StatefulWidget {
 class _ovelseState extends State<ovelse> {
 
 
-  final formFieldController = TextEditingController(); // Kontrollerer hva som skal vises i editeringsfeltet@override
+ final formFieldController = TextEditingController(); // Kontrollerer hva som skal vises i editeringsfeltet@override
 
-  // Clean up the controller when the widget is disposed.
-  void dispose() {
-    formFieldController.dispose();
-    super.dispose();
-  }
-  // Start listening to changes.
-
+    // Start listening to changes.
   @override
   void initState() {
+    fyllUttrekksetninger(); // Lager en liste med setninger som tilhører gjeldende kommaregelnummer (regelNr)
     super.initState();
-    formFieldController.addListener(_printLatestValue);
+    formFieldController.addListener((){
+      //formFieldController.text = uttrekksSetning;
+    });
   }
 
-  @override
+ // Clean up the controller when the widget is disposed.
+ void dispose() {
+   formFieldController.dispose();
+   super.dispose();
+ }
+
+ @override
   Widget build(BuildContext context) {
     //debugPrint(setninger[regelIndeks].tekstMedKomma);
 
     _indeks = widget.regelIndeks;
-    fyllUttrekksetninger(); // Lager en liste med setninger som tilhører gjeldende kommaregelnummer (regelNr)
+    //fyllUttrekksetninger(); // Lager en liste med setninger som tilhører gjeldende kommaregelnummer (regelNr)
 
     return Scaffold(
       appBar: AppBar(
@@ -64,7 +66,7 @@ class _ovelseState extends State<ovelse> {
                   Text("Sett inn komma der du mener det er riktig:\n",
                       style: TextStyle(color: Colors.blueGrey),
                       textAlign: TextAlign.left),
-                  TextFormField(
+                  TextField(
                     keyboardType: TextInputType.text,
                     controller: formFieldController,
                     maxLines: null,
@@ -125,10 +127,10 @@ class _ovelseState extends State<ovelse> {
 
   void fyllUttrekksetninger() {
     int i;
-    uttrekkSetninger.clear();
-    uttrekksSetning =
-        "Ingen øvingssetninger til denne kommaregelen"; //Dersom try-catch ikke gir resultat
+    _indeks =0;
+    uttrekksSetning = "Ingen øvingssetninger til denne kommaregelen"; //Dersom try-catch ikke gir resultat
     regel = "";
+    uttrekkSetninger.clear();
 
     for (i = 0; i < setninger.length; i++) {
       try {
@@ -138,19 +140,20 @@ class _ovelseState extends State<ovelse> {
           uttrekksSetning = uttrekkSetninger[0].tekstUtenKomma;
           regel = kommaregler[_indeks].regel;
         }
-        formFieldController.text = uttrekksSetning;
       } on Exception catch (e) {
         debugPrint(e.toString());
       }
     }
+    formFieldController.text = uttrekksSetning;
+    debugPrint("Antall setninger i uttrekket = ${uttrekkSetninger.length} og valgt setning er: $uttrekksSetning");
   }
 
   sjekkSvaret(BuildContext context) {
     if (valgtSvar != rettSvar || valgtSvar == "" || rettSvar == "") {
       final snackbar = SnackBar(
-        duration: Duration(seconds: 5),
+        duration: Duration(seconds: 10),
           backgroundColor: Colors.red,
-          content: Text("Svaret er feil"));
+          content: Text("Svaret er feil! Prøv på nytt..."));
       Scaffold.of(context).showSnackBar(snackbar);
     } else {
       final snackbar = SnackBar(
@@ -164,18 +167,19 @@ class _ovelseState extends State<ovelse> {
   tilForrige() {
     setState(() {
       _uttrekksindeks = (_uttrekksindeks - 1) % uttrekkSetninger.length;
+      uttrekksSetning = uttrekkSetninger[_uttrekksindeks].tekstUtenKomma;
+      formFieldController.text = uttrekksSetning;
     });
   }
 
   tilNeste() {
+    formFieldController.clear();
     setState(() {
       _uttrekksindeks = (_uttrekksindeks + 1) % uttrekkSetninger.length;
-      formFieldController.text = uttrekkSetninger[_uttrekksindeks].tekstUtenKomma;
+      uttrekksSetning = uttrekkSetninger[_uttrekksindeks].tekstUtenKomma;
+      formFieldController.text = uttrekksSetning;
     });
-    debugPrint(
-        "Indeksen er: $_uttrekksindeks og setningen er: ${formFieldController.text}");
+    debugPrint("Indeksen er: $_uttrekksindeks og setningen er: $uttrekksSetning");
   }
 
-  void _printLatestValue() {
-    }
 }
