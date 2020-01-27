@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:komma/about.dart';
 import 'package:komma/data.dart';
+import 'package:komma/splash.dart';
 
 void main() => runApp(new MaterialApp(home: Komma()));
 Color _colorFront = Colors.deepOrangeAccent;

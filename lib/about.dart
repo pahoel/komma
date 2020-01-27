@@ -42,7 +42,7 @@ class _ovelseState extends State<ovelse> {
   Widget build(BuildContext context) {
     //debugPrint(setninger[regelIndeks].tekstMedKomma);
 
-    _indeks = widget.regelIndeks;
+    //_indeks = widget.regelIndeks;
     //fyllUttrekksetninger(); // Lager en liste med setninger som tilhører gjeldende kommaregelnummer (regelNr)
 
     return Scaffold(
@@ -127,7 +127,7 @@ class _ovelseState extends State<ovelse> {
 
   void fyllUttrekksetninger() {
     int i;
-    _indeks =0;
+    _indeks = widget.regelIndeks;
     uttrekksSetning = "Ingen øvingssetninger til denne kommaregelen"; //Dersom try-catch ikke gir resultat
     regel = "";
     uttrekkSetninger.clear();
