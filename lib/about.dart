@@ -9,6 +9,9 @@ String rettSvar = ""; //Korrekt svar på oppgaven
 String regel = ""; //Regelen som skal vises under øvingstekset
 List uttrekkSetninger = new List(); // Setningene som tilhører denne kommaregelen
 String uttrekksSetning; //Setningen som skal vises i redigeringsfeltet
+String resultatet = "";
+int antRette = 0;
+int antFeil = 0;
 
 class ovelse extends StatefulWidget {
   @override
@@ -27,9 +30,6 @@ class _ovelseState extends State<ovelse> {
   void initState() {
     fyllUttrekksetninger(); // Lager en liste med setninger som tilhører gjeldende kommaregelnummer (regelNr)
     super.initState();
-    formFieldController.addListener((){
-      //formFieldController.text = uttrekksSetning;
-    });
   }
 
  // Clean up the controller when the widget is disposed.
@@ -70,6 +70,7 @@ class _ovelseState extends State<ovelse> {
                     keyboardType: TextInputType.text,
                     controller: formFieldController,
                     maxLines: null,
+                    autofocus: true,
                     decoration: InputDecoration(
                       helperText: "Husk: Ikke mellomrom foran komma...",
                     ),
@@ -115,7 +116,7 @@ class _ovelseState extends State<ovelse> {
                     ],
                   ),
                   Spacer(),
-                  Text(""),
+                  Text(resultatet),
                 ],
               ),
             ),
@@ -144,11 +145,12 @@ class _ovelseState extends State<ovelse> {
         debugPrint(e.toString());
       }
     }
-    formFieldController.text = uttrekksSetning;
-    debugPrint("Antall setninger i uttrekket = ${uttrekkSetninger.length} og valgt setning er: $uttrekksSetning");
+    formFieldController.text = uttrekksSetning;//Gir ny tekst i tekstfeltet som skal redigeres
   }
 
   sjekkSvaret(BuildContext context) {
+    bool _svaretErKorrekt = false;
+    //debugPrint("Valgt svar: $valgtSvar og rett svar: $rettSvar");
     if (valgtSvar != rettSvar || valgtSvar == "" || rettSvar == "") {
       final snackbar = SnackBar(
         duration: Duration(seconds: 10),
@@ -156,12 +158,21 @@ class _ovelseState extends State<ovelse> {
           content: Text("Svaret er feil! Prøv på nytt..."));
       Scaffold.of(context).showSnackBar(snackbar);
     } else {
+      _svaretErKorrekt = true;
       final snackbar = SnackBar(
           duration: Duration(seconds: 1),
           backgroundColor: Colors.green,
           content: Text("Svaret er korrekt"));
       Scaffold.of(context).showSnackBar(snackbar);
     }
+    setState(() {
+      if(_svaretErKorrekt == true){
+        antRette ++;
+      } else{
+        antFeil ++;
+      }
+    });
+    resultatet = ("$antRette korrekte svar og $antFeil feil svar så langt");
   }
 
   tilForrige() {
@@ -170,6 +181,8 @@ class _ovelseState extends State<ovelse> {
       uttrekksSetning = uttrekkSetninger[_uttrekksindeks].tekstUtenKomma;
       formFieldController.text = uttrekksSetning;
     });
+    valgtSvar = uttrekksSetning;
+    rettSvar = uttrekkSetninger[_uttrekksindeks].tekstMedKomma;
   }
 
   tilNeste() {
@@ -179,7 +192,8 @@ class _ovelseState extends State<ovelse> {
       uttrekksSetning = uttrekkSetninger[_uttrekksindeks].tekstUtenKomma;
       formFieldController.text = uttrekksSetning;
     });
-    debugPrint("Indeksen er: $_uttrekksindeks og setningen er: $uttrekksSetning");
+    valgtSvar = uttrekksSetning;
+    rettSvar = uttrekkSetninger[_uttrekksindeks].tekstMedKomma;
   }
 
 }
