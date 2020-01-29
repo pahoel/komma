@@ -71,6 +71,7 @@ class _ovelseState extends State<ovelse> {
                     controller: formFieldController,
                     maxLines: null,
                     autofocus: true,
+                    style: TextStyle(fontSize: 20, letterSpacing: 2),
                     decoration: InputDecoration(
                       helperText: "Husk: Ikke mellomrom foran komma...",
                     ),
@@ -116,7 +117,12 @@ class _ovelseState extends State<ovelse> {
                     ],
                   ),
                   Spacer(),
-                  Text(resultatet),
+                  Container(
+                    child: Text(
+                      resultatet,
+                      style: TextStyle(color: Colors.deepOrangeAccent, fontWeight: FontWeight.bold),
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -129,7 +135,7 @@ class _ovelseState extends State<ovelse> {
   void fyllUttrekksetninger() {
     int i;
     _indeks = widget.regelIndeks;
-    uttrekksSetning = "Ingen øvingssetninger til denne kommaregelen"; //Dersom try-catch ikke gir resultat
+    uttrekksSetning = "Ingen øvelser til denne kommaregelen"; //Dersom try-catch ikke gir resultat
     regel = "";
     uttrekkSetninger.clear();
 

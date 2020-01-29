@@ -75,17 +75,101 @@ List setninger = [
       "Dette var svært hyggelig men nå må vi dra hjem",
       0),
   Training(
-      "2 Dette er også en tekst med komma, og ikke uten komma",
-      "2 Dette er også en tekst uten komma og ikke med komma",
+      "Hvis helsa holder og tiden strekker til, kommer vi på besøk i jula",
+      "Hvis helsa holder og tiden strekker til kommer vi på besøk i jula",
       1),
   Training(
-      "2,1 Dette er også en tekst med komma, og ikke uten komma",
-      "2,1 Dette er også en tekst uten komma og ikke med komma",
+      "Hvis helsa holder, og hvis tiden strekker til, kommer vi på besøk i jula",
+      "Hvis helsa holder og tiden strekker til kommer vi på besøk i jula",
       1),
   Training(
-      "3 Dette er også en tekst med komma, og ikke uten komma",
-      "3 Dette er også en tekst uten komma og ikke med komma",
-      2)
+      "Dersom dette er alt du har å by på og humøret er like dårlig, tar vi kvelden nå",
+      "Dersom dette er alt du har å by på og humøret er like dårlig tar vi kvelden nå",
+      1),
+  Training(
+      "Dersom dette er alt du har å by på, og dersom humøret er like dårlig, tar vi kvelden nå",
+      "Dersom dette er alt du har å by på og dersom humøret er like dårlig tar vi kvelden nå",
+      1),
+  Training(
+      "Da Knut kom hjem, døde kona",
+      "Da Knut kom hjem døde kona",
+      2),
+  Training(
+      "Hvis du vil ha billetter til festspillene i Bayruth mens du lever, må du søke før du blir tjue",
+      "Hvis du vil ha billetter til festspillene i Bayruth mens du lever må du søke før du blir tjue",
+      2),
+  Training(
+      "Når Jarle blir engasjert, glemmer han å spise",
+      "Når Jarle blir engasjert glemmer han å spise",
+      2),
+  Training(
+      "Da Blakken kom inn fra beite, var han oppspist av mygg",
+      "Da Blakken kom inn fra beite var han oppspist av mygg",
+      2),
+  Training(
+      "Hvis du ikke kan ta deg selv i nakken, skal jeg gjøre det!",
+      "Hvis du ikke kan ta deg selv i nakken skal jeg gjøre det!",
+      2),
+  Training(
+      "Forestilling som var ny for oss, svarte fullt ut til forventningene",
+      "Forestilling som var ny for oss svarte fullt ut til forventningene",
+      3),
+  Training(
+      "Desserten som vi hadde sett frem til, var en gedigen nedtur",
+      "Desserten som vi hadde sett frem til var en gedigen nedtur",
+      3),
+  Training(
+      "Gutten som forvolte skaden, forsvant som dugg for sola",
+      "Gutten som forvolte skaden forsvant som dugg for sola",
+      3),
+  Training(
+      "Pizzadeigen som hadde hevet i 48 timer, gav en fantastisk fin bunn",
+      "Pizzadeigen som hadde hevet i 48 timer gav en fantastisk fin bunn",
+      3),
+  Training(
+      "Maten vi fikk til middag, smakte fortreffelig",
+      "Maten vi fikk til middag smakte fortreffelig",
+      3),
+  Training(
+      "Kniven, som hadde sort skaft, var en vanlig kjøkkenkniv",
+      "Kniven som hadde sort skaft var en vanlig kjøkkenkniv",
+      4),
+  Training(
+      "Jenta, som hadde blå jakke, var ute på heisatur",
+      "Jenta som hadde blå jakke var ute på heisatur",
+      4),
+  Training(
+      "Filmen, som var i lengste laget, var tekstet på polsk",
+      "Filmen som var i lengste laget var tekstet på polsk",
+      4),
+  Training(
+      "Studenten, som ofte var for sein, møtte ikke opp til eksamen",
+      "Studenten som ofte var for sein møtte ikke opp til eksamen",
+      4),
+  Training(
+      "Den nye kua, som var kollet, melket best av all",
+      "Den nye kua, som var kollet, melket best av all",
+      4),
+  Training(
+      "Hovedstaden i Norge, Oslo, het før Kristiania",
+      "Hovedstaden i Norge Oslo het før Kristiania",
+      5),
+  Training(
+      "Richard Wagner, tidenes største operakomponist, bygde sitt eget operahus i Bayruth",
+      "Richard Wagner tidenes største operakomponist bygde sitt eget operahus i Bayruth",
+      5),
+  Training(
+      " ",
+      " ",
+      5),
+  Training(
+      " ",
+      " ",
+      5),
+  Training(
+      " ",
+      " ",
+      5),
 ];
 
 
