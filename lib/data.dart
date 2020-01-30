@@ -159,17 +159,102 @@ List setninger = [
       "Richard Wagner tidenes største operakomponist bygde sitt eget operahus i Bayruth",
       5),
   Training(
-      " ",
-      " ",
+      "Mozarella, som kun lages av bøffelmelk, er den beste osten til pizza",
+      "Mozarella som kun lages av bøffelmelk er den beste osten til pizza",
       5),
   Training(
-      " ",
-      " ",
+      "Grand danois, en hunderase av molossertype, er kjent for sin enorme størrelse",
+      "Grand danois en hunderase av molossertype er kjent for sin enorme størrelse",
       5),
   Training(
-      " ",
-      " ",
+      "Han, mannen uten egenskaper, gjorde lite utav seg",
+      "Han mannen uten egenskaper gjorde lite utav seg",
       5),
+  Training(
+      "Inger Johanne, kommer du hit i dag?",
+      "Inger Johanne kommer du hit i dag?",
+      6),
+  Training(
+      "Å, disse smertene!",
+      "Å disse smertene! ",
+      6),
+  Training(
+      "Au, du kjørte over foten min!",
+      "Au du kjørte over foten min!",
+      6),
+  Training(
+      "Sussebass, du er så søt",
+      "Sussebass du er så søt",
+      6),
+  Training(
+      "Kan vi spille sjakk når vi kommer hjem, pappa?",
+      "Kan vi spille sjakk når vi kommer hjem pappa?",
+      6),
+  Training(
+      "Hun hadde fri 11., 13., 15. og 17. mai",
+      "Hun hadde fri 11. 13. 15. og 17. mai",
+      7),
+  Training(
+      "Henrik, Jon, Are og Trygve dro på fisketur",
+      "Henrik Jon Are og Trygve dro på fisketur",
+      7),
+  Training(
+      "Hun ramset opp en, to, tre og fire utsøkte selvfølgeligheter før hun gav fra seg ordet",
+      "Hun ramset opp en to tre og fire utsøkte selvfølgeligheter før hun gav fra seg ordet",
+      7),
+  Training(
+      "På hundeutstillinga var det flere raser tilstede: Afrikansk mynde, Engelsk bulldog, Strihåret forster og Dvergpuddel",
+      " På hundeutstillinga var det flere raser tilstede: Afrikansk mynde Engelsk bulldog Strihåret forster og Dvergpuddel",
+      7),
+  Training(
+      "Brie, Camembert, Port Salut og Roquefort er franske ostetyper",
+      "Brie, Camembert, Port Salut og Roquefort er franske ostetyper",
+      7),
+  Training(
+      '"Dette stemmer ikke", sa advokaten',
+      '"Dette stemmer ikke" sa advokaten',
+      8),
+  Training(
+      '"Jeg kommer senere", sa hun',
+      '"Jeg kommer senere" sa hun',
+      8),
+  Training(
+      '"Dette kan vi ikke være fornøyd med", sa han',
+      '"Dette kan vi ikke være fornøyd med" sa han',
+      8),
+  Training(
+      '"Her er det ikke noen vits å lete", sa etterforskeren',
+      '"Her er det ikke noen vits å lete" sa etterforskeren',
+      8),
+  Training(
+      '"Jeg kommer tilbake senere", sa guiden',
+      '"Jeg kommer tilbake senere" sa guiden',
+      8),
+  Training(
+      '"Ser du ikke at dette blir farlig?" sa guiden',
+      '"Ser du ikke at dette blir farlig?" sa guiden',
+      9),
+  Training(
+      '"Hvorfor kommer du hit i dag?" sa onkelen',
+      '"Hvorfor kommer du hit i dag?" sa onkelen',
+      9),
+  Training(
+      '"Hold kjeft!" ropte konkurrenten',
+      '"Hold kjeft!" ropte konkurrenten',
+      9),
+  Training(
+      '"Sett deg ned med en gang!" sa læreren ',
+      '"Sett deg ned med en gang!" sa læreren ',
+      9),
+  Training(
+      '"Dette funker ikke lenger!" sa instruktøren',
+      '"Dette funker ikke lenger!" sa instruktøren',
+      9),
+  Training(
+      '"Kommer du inn til middag nå?" sa faren',
+      '"Kommer du inn til middag nå?" sa faren',
+      9),
+
 ];
 
 
