@@ -28,6 +28,7 @@ class _ovelseState extends State<ovelse> {
     // Start listening to changes.
   @override
   void initState() {
+    _indeks = widget.regelIndeks;
     fyllUttrekksetninger(); // Lager en liste med setninger som tilhører gjeldende kommaregelnummer (regelNr)
     super.initState();
   }
@@ -70,14 +71,13 @@ class _ovelseState extends State<ovelse> {
                     keyboardType: TextInputType.text,
                     controller: formFieldController,
                     maxLines: null,
-                    autofocus: true,
+                    //autofocus: true,
                     style: TextStyle(fontSize: 20, letterSpacing: 2),
                     decoration: InputDecoration(
                       helperText: "Husk: Ikke mellomrom foran komma...",
                     ),
                     onChanged: (String value) {
                       valgtSvar = value;
-                      rettSvar = setninger[_uttrekksindeks].tekstMedKomma;
                     },
                   ),
                   Container(
@@ -134,7 +134,7 @@ class _ovelseState extends State<ovelse> {
 
   void fyllUttrekksetninger() {
     int i;
-    _indeks = widget.regelIndeks;
+    //_indeks = widget.regelIndeks;
     uttrekksSetning = "Ingen øvelser til denne kommaregelen"; //Dersom try-catch ikke gir resultat
     regel = "";
     uttrekkSetninger.clear();
@@ -152,11 +152,13 @@ class _ovelseState extends State<ovelse> {
       }
     }
     formFieldController.text = uttrekksSetning;//Gir ny tekst i tekstfeltet som skal redigeres
+    rettSvar = uttrekkSetninger[0].tekstMedKomma; // Setter verdiene til rett svar og valgt svar når ny kommaregel kommer
+    valgtSvar = uttrekksSetning; // og brukeren avgir svar uten å klikke i tekstfeltet
   }
 
   sjekkSvaret(BuildContext context) {
     bool _svaretErKorrekt = false;
-    //debugPrint("Valgt svar: $valgtSvar og rett svar: $rettSvar");
+    debugPrint("Valgt svar: $valgtSvar og rett svar: $rettSvar . ant setninger er ${uttrekkSetninger.length}");
     if (valgtSvar != rettSvar || valgtSvar == "" || rettSvar == "") {
       final snackbar = SnackBar(
         duration: Duration(seconds: 10),
@@ -200,6 +202,7 @@ class _ovelseState extends State<ovelse> {
     });
     valgtSvar = uttrekksSetning;
     rettSvar = uttrekkSetninger[_uttrekksindeks].tekstMedKomma;
+    //debugPrint("Valgt svar: $valgtSvar og rett svar: $rettSvar . ant setninger er ${uttrekkSetninger.length}");
   }
 
 }
