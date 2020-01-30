@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:komma/about.dart';
 import 'package:komma/data.dart';
+import 'package:komma/om_oss.dart';
 
 void main() => runApp(new MaterialApp(home: Komma()));
 Color _colorFront = Colors.deepOrangeAccent;
@@ -18,6 +19,13 @@ class Komma extends StatelessWidget {
           title: Text("Kommareglene"),
           backgroundColor: _colorFront,
           centerTitle: true,
+          actions: <Widget>[
+            IconButton(icon: const Icon(Icons.control_point), tooltip: 'Om appen',
+            onPressed: (){
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => OmOss()));
+            },)
+          ],
         ),
         backgroundColor: _colorBack,
         body: ListView.builder(
