@@ -16,15 +16,15 @@ class Training {
 
 List kommaregler = [
   Kommaregler(
-      "Komma mellom setninger som er bundet sammen med og, eller, for og men. Alltid komma foran men.\nIkke komma når den siste setninga ikke inneholder subjekt",
+      "Komma mellom helsetninger som er bundet sammen med og, eller, for og men. Alltid komma foran men.\nMen ikke komma når den siste setninga ikke inneholder subjekt",
       "Petter skifta jobb for tredje gang på to år, og Aud fulgte opp med sin andre skilsmisse på to år."),
   Kommaregler(
-      "Ikke komma mellom to leddsetninger (bisetninger) dersom subjunksjonen ikke gjentas\nSubjunksjoner:\n'da', 'når', 'hvis', 'dersom', 'mens', 'etter at', 'før', 'fordi', 'om', 'enda', 'selv om', 'at', 'for at', 'slik at', 'slik som, 'å' og 'som' og 'enn' når de innleder leddsetninger.",
+      "Ikke komma mellom to leddsetninger (bisetninger) dersom subjunksjonen('da', 'når', 'hvis', 'dersom',...) ikke gjentas.",
       "Hvis helsa holder og økonomien er i orden, drar vi på ferie til Mexico neste år.\nMen: \nHvis helsa holder, og hvis økonomien er i orden, drar vi på ferie til Mexico neste år.",),
   Kommaregler("Komma etter leddsetning som står først i en helsetning",
       "Da Else kom, hadde de andre allerede spist."),
-  Kommaregler("Komma etter innskutt leddsetning",
-      "Boka som lå på bordet, var mi."),
+  Kommaregler("Komma etter innskutt leddsetning.\n'Som' markerer ofte starten på en leddsetning. Men etterfølges 'som' ikke av et verb, skal det ikke være komma",
+      "Boka som lå på bordet, var mi.\nMen: Med gult som farge går landslaget for gull."),
   Kommaregler(
       "Komma også foran innskutt leddsetning som ikke er nødvendig i helsetningen",
       "Direktøren, som hadde vært ute på rangel, møtte ikke opp."),

@@ -169,7 +169,7 @@ class _ovelseState extends State<ovelse> {
 
   sjekkSvaret(BuildContext context) {
     bool _svaretErKorrekt = false;
-    debugPrint("Valgt svar: $valgtSvar og rett svar: $rettSvar . ant setninger er ${uttrekkSetninger.length}");
+    //debugPrint("Valgt svar: $valgtSvar og rett svar: $rettSvar . ant setninger er ${uttrekkSetninger.length}");
     if (valgtSvar != rettSvar || valgtSvar == "" || rettSvar == "") {
       final snackbar = SnackBar(
         duration: Duration(seconds: 10),
