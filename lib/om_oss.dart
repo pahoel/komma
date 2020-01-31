@@ -21,7 +21,7 @@ class OmOss extends StatelessWidget {
             ),
             Text("På forsiden ser du de ti viktigste kommareglene - med eksempler.\nNår du klikker på en av reglene, får du anledning til "
                 "å trene litt på den aktuelle regelen.\nGjør teksten korrekt i forhold til bruk av komma. Du sjekker om løsninga"
-                "er korrekt ved å trykke på V under setninga.\n"),
+                "er korrekt ved å trykke på V under setninga.\n\n"),
             Text (
               "Om appen:\n",
               style: TextStyle(fontSize: 20, color: Colors.deepOrangeAccent),

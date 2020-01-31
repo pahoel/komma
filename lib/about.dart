@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:komma/data.dart';
 
+import 'om_oss.dart';
+
 int _indeks; //Holder indeksen til gjeldende kommaregel overført fra main til regelIndeks her
 int _uttrekksindeks = 0;
 String valgtSvar = ""; // Brukerens løsning på setningen
@@ -50,6 +52,13 @@ class _ovelseState extends State<ovelse> {
       appBar: AppBar(
         title: Text("Lær deg kommareglen!"),
         backgroundColor: Colors.deepOrangeAccent,
+        actions: <Widget>[
+          IconButton(icon: const Icon(Icons.question_answer), tooltip: 'Om appen',
+            onPressed: (){
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => OmOss()));
+            },)
+        ],
       ),
       body: Builder(
         builder: (BuildContext context) => Container(
@@ -70,6 +79,7 @@ class _ovelseState extends State<ovelse> {
                   TextField(
                     keyboardType: TextInputType.text,
                     controller: formFieldController,
+                    autocorrect: false,
                     maxLines: null,
                     //autofocus: true,
                     style: TextStyle(fontSize: 20, letterSpacing: 2),
@@ -85,6 +95,7 @@ class _ovelseState extends State<ovelse> {
                     child: Text(
                       regel,
                       style: TextStyle(color: Colors.redAccent),
+                      textScaleFactor: 0.9,
                     ),
                   ),
                   Row(
